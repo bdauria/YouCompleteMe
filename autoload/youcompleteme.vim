@@ -521,6 +521,10 @@ function! s:OnInsertEnter()
   endif
 
   let s:old_cursor_position = []
+
+  if g:ycm_auto_trigger || s:omnifunc_mode
+    call s:InvokeCompletion()
+  endif
 endfunction
 
 
