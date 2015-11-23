@@ -10,6 +10,8 @@ install:
   - source travis/travis_install.sh
 script: ./run_tests.py --run-all
 env:
+  global:
+    - VIMSCRIPT=true
   matrix:
     - YCMD_PYTHON_VERSION=2.7
     - YCMD_PYTHON_VERSION=2.6
