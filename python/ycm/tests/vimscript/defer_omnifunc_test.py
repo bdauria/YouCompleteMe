@@ -49,7 +49,7 @@ class OmnifuncTest( TestCase ):
     if OnMac():
       return self.server.start_gvim()
     else:
-      return self.server.start()
+      return self.server.start_in_other_terminal()
 
 
   def setUp( self ):
