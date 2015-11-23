@@ -37,8 +37,6 @@ def ParseArguments():
   parser = argparse.ArgumentParser()
   parser.add_argument( '--skip-build', action = 'store_true',
                        help = 'Do not build ycmd before testing.' )
-  parser.add_argument( '--run-all', action = 'store_true',
-                       help = 'Run all tests.' )
 
   return parser.parse_args()
 
@@ -51,24 +49,11 @@ def BuildYcmdLibs( args ):
     ] )
 
 
-def TestingVimscript():
-  return os.environ.get( 'VIMSCRIPT' )
-
-
 def NoseTests():
   subprocess.check_call( [
     'nosetests',
     '-v',
-    p.join( DIR_OF_THIS_SCRIPT, 'python' ),
-    '--exclude-dir={0}'.format( p.join( 'python', 'ycm', 'tests', 'vimscript' ) )
-  ] )
-
-
-def NoseVimscriptTests():
-  subprocess.check_call( [
-    'nosetests',
-    '-v',
-    p.join( DIR_OF_THIS_SCRIPT, 'python', 'ycm', 'tests', 'vimscript' )
+    p.join( DIR_OF_THIS_SCRIPT, 'python' )
   ] )
 
 
@@ -76,14 +61,7 @@ def Main():
   parsed_args = ParseArguments()
   RunFlake8()
   BuildYcmdLibs( parsed_args )
-
-  if parsed_args.run_all:
-    NoseTests()
-    NoseVimscriptTests()
-  elif TestingVimscript():
-    NoseVimscriptTests()
-  else:
-    NoseTests()
+  NoseTests()
 
 if __name__ == "__main__":
   Main()
