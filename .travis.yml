@@ -26,6 +26,7 @@ addons:
      - python2.7
      - python2.7-dev
      - python-virtualenv
+     - xterm
 cache:
   directories:
     - $HOME/.cache/pip
