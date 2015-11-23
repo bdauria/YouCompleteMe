@@ -8,5 +8,8 @@ install:
   - ci\appveyor\install.bat
 build_script:
   - python run_tests.py
+cache:
+  - '%LOCALAPPDATA%\pip'
+  - '%USERPROFILE%\vim'
 # Disable automatic tests
 test: off
