@@ -4,3 +4,6 @@
 [submodule "third_party/ycmd"]
 	path = third_party/ycmd
 	url = https://github.com/Valloric/ycmd
+[submodule "third_party/vimrunner"]
+	path = third_party/vimrunner
+	url = https://github.com/micbou/vimrunner-python.git
