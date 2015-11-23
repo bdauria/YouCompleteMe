@@ -8,12 +8,11 @@ before_install:
 install:
   # source because it sets up env vars on some platforms
   - source travis/travis_install.sh
-script: ./run_tests.py
+script: ./run_tests.py --run-all
 env:
   matrix:
     - YCMD_PYTHON_VERSION=2.7
     - YCMD_PYTHON_VERSION=2.6
-    - VIMSCRIPT=true
 addons:
   apt:
     sources:
