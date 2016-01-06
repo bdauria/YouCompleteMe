@@ -81,6 +81,7 @@ function! youcompleteme#Enable()
     " code again.
     autocmd BufReadPre * call s:OnBufferReadPre( expand( '<afile>:p' ) )
     autocmd BufRead,BufEnter,FileType * call s:OnBufferVisit()
+    autocmd User UltiSnipsAddFiletypes call s:OnBufferVisit()
     autocmd BufUnload * call s:OnBufferUnload( expand( '<afile>:p' ) )
     autocmd CursorHold,CursorHoldI * call s:OnCursorHold()
     autocmd InsertLeave * call s:OnInsertLeave()
