@@ -30,7 +30,6 @@ import json
 import re
 import signal
 import base64
-from subprocess import PIPE
 from tempfile import NamedTemporaryFile
 from ycm import paths, vimsupport
 from ycmd import utils
@@ -158,8 +157,7 @@ class YouCompleteMe( object ):
       if self._user_options[ 'server_keep_logfiles' ]:
         args.append( '--keep_logfiles' )
 
-      self._server_popen = utils.SafePopen( args, stdin_windows = PIPE,
-                                            stdout = PIPE, stderr = PIPE )
+      self._server_popen = utils.SafePopen( args, close_fds = True )
       BaseRequest.server_location = 'http://127.0.0.1:' + str( server_port )
       BaseRequest.hmac_secret = hmac_secret
 
